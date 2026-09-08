@@ -31,21 +31,22 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.panIngresoDatos = new System.Windows.Forms.Panel();
-            this.dgvEmpleados = new System.Windows.Forms.DataGridView();
-            this.txtNumeroID = new System.Windows.Forms.TextBox();
-            this.lblNumeroID = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblCorreo = new System.Windows.Forms.Label();
-            this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.lblCumpleaños = new System.Windows.Forms.Label();
-            this.txtCumpleaños = new System.Windows.Forms.DateTimePicker();
             this.btnGrabar = new System.Windows.Forms.Button();
+            this.txtCumpleaños = new System.Windows.Forms.DateTimePicker();
+            this.lblCumpleaños = new System.Windows.Forms.Label();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.lblCorreo = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblNumeroID = new System.Windows.Forms.Label();
+            this.txtNumeroID = new System.Windows.Forms.TextBox();
+            this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnAyuda = new System.Windows.Forms.Button();
+            this.comboI1 = new Capa_Vista_ComboI.ComboI();
             this.panIngresoDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -84,63 +85,23 @@
             this.panIngresoDatos.Size = new System.Drawing.Size(305, 376);
             this.panIngresoDatos.TabIndex = 2;
             // 
-            // dgvEmpleados
+            // btnGrabar
             // 
-            this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(33, 67);
-            this.dgvEmpleados.Name = "dgvEmpleados";
-            this.dgvEmpleados.RowHeadersWidth = 51;
-            this.dgvEmpleados.RowTemplate.Height = 24;
-            this.dgvEmpleados.Size = new System.Drawing.Size(817, 266);
-            this.dgvEmpleados.TabIndex = 3;
+            this.btnGrabar.Location = new System.Drawing.Point(82, 288);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(150, 44);
+            this.btnGrabar.TabIndex = 8;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
-            // txtNumeroID
+            // txtCumpleaños
             // 
-            this.txtNumeroID.Location = new System.Drawing.Point(27, 51);
-            this.txtNumeroID.Name = "txtNumeroID";
-            this.txtNumeroID.Size = new System.Drawing.Size(249, 22);
-            this.txtNumeroID.TabIndex = 0;
-            // 
-            // lblNumeroID
-            // 
-            this.lblNumeroID.AutoSize = true;
-            this.lblNumeroID.Location = new System.Drawing.Point(27, 20);
-            this.lblNumeroID.Name = "lblNumeroID";
-            this.lblNumeroID.Size = new System.Drawing.Size(136, 16);
-            this.lblNumeroID.TabIndex = 1;
-            this.lblNumeroID.Text = "Nùmero Identificaciòn";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(27, 107);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(248, 22);
-            this.txtNombre.TabIndex = 2;
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(27, 77);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(56, 16);
-            this.lblNombre.TabIndex = 3;
-            this.lblNombre.Text = "Nombre";
-            // 
-            // lblCorreo
-            // 
-            this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Location = new System.Drawing.Point(32, 144);
-            this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(118, 16);
-            this.lblCorreo.TabIndex = 4;
-            this.lblCorreo.Text = "Correo Electrònico";
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.Location = new System.Drawing.Point(27, 168);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(247, 22);
-            this.txtCorreo.TabIndex = 5;
+            this.txtCumpleaños.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtCumpleaños.Location = new System.Drawing.Point(27, 241);
+            this.txtCumpleaños.Name = "txtCumpleaños";
+            this.txtCumpleaños.Size = new System.Drawing.Size(247, 22);
+            this.txtCumpleaños.TabIndex = 7;
             // 
             // lblCumpleaños
             // 
@@ -151,23 +112,63 @@
             this.lblCumpleaños.TabIndex = 6;
             this.lblCumpleaños.Text = "Cumpleaños";
             // 
-            // txtCumpleaños
+            // txtCorreo
             // 
-            this.txtCumpleaños.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtCumpleaños.Location = new System.Drawing.Point(27, 241);
-            this.txtCumpleaños.Name = "txtCumpleaños";
-            this.txtCumpleaños.Size = new System.Drawing.Size(247, 22);
-            this.txtCumpleaños.TabIndex = 7;
+            this.txtCorreo.Location = new System.Drawing.Point(27, 168);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(247, 22);
+            this.txtCorreo.TabIndex = 5;
             // 
-            // btnGrabar
+            // lblCorreo
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(82, 288);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(150, 44);
-            this.btnGrabar.TabIndex = 8;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.UseVisualStyleBackColor = true;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Location = new System.Drawing.Point(32, 144);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(118, 16);
+            this.lblCorreo.TabIndex = 4;
+            this.lblCorreo.Text = "Correo Electrònico";
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(27, 77);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(56, 16);
+            this.lblNombre.TabIndex = 3;
+            this.lblNombre.Text = "Nombre";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(27, 107);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(248, 22);
+            this.txtNombre.TabIndex = 2;
+            // 
+            // lblNumeroID
+            // 
+            this.lblNumeroID.AutoSize = true;
+            this.lblNumeroID.Location = new System.Drawing.Point(27, 20);
+            this.lblNumeroID.Name = "lblNumeroID";
+            this.lblNumeroID.Size = new System.Drawing.Size(136, 16);
+            this.lblNumeroID.TabIndex = 1;
+            this.lblNumeroID.Text = "Nùmero Identificaciòn";
+            // 
+            // txtNumeroID
+            // 
+            this.txtNumeroID.Location = new System.Drawing.Point(27, 51);
+            this.txtNumeroID.Name = "txtNumeroID";
+            this.txtNumeroID.Size = new System.Drawing.Size(249, 22);
+            this.txtNumeroID.TabIndex = 0;
+            // 
+            // dgvEmpleados
+            // 
+            this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleados.Location = new System.Drawing.Point(33, 67);
+            this.dgvEmpleados.Name = "dgvEmpleados";
+            this.dgvEmpleados.RowHeadersWidth = 51;
+            this.dgvEmpleados.RowTemplate.Height = 24;
+            this.dgvEmpleados.Size = new System.Drawing.Size(817, 266);
+            this.dgvEmpleados.TabIndex = 3;
             // 
             // btnBorrar
             // 
@@ -222,11 +223,19 @@
             this.btnAyuda.Text = "Ayuda";
             this.btnAyuda.UseVisualStyleBackColor = false;
             // 
+            // comboI1
+            // 
+            this.comboI1.Location = new System.Drawing.Point(33, 32);
+            this.comboI1.Name = "comboI1";
+            this.comboI1.Size = new System.Drawing.Size(736, 25);
+            this.comboI1.TabIndex = 9;
+            // 
             // FrmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1187, 464);
+            this.Controls.Add(this.comboI1);
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnNuevo);
@@ -267,5 +276,6 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnAyuda;
+        private Capa_Vista_ComboI.ComboI comboI1;
     }
 }

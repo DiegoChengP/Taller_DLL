@@ -18,6 +18,7 @@ namespace CapaVista_prototipoumg2k26.Formas
         {
             InitializeComponent();
             panIngresoDatos.Enabled = false;
+            CargarDatos();
         }
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
@@ -103,6 +104,11 @@ namespace CapaVista_prototipoumg2k26.Formas
                 listaEmpleados();
             }
             else MessageBox.Show("Seleccione una fila");
+        }
+        void CargarDatos()
+        {
+            comboI1.llenarCombo("tbl_empleadospuestos", "codigo_empleado", "puesto");
+
         }
     }
 }
