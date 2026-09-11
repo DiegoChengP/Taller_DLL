@@ -14,11 +14,14 @@ namespace CapaControlador_prototipoumg2k26
     public class ModeloEmpleado
     {
         private int _idPK;
-        private string _idNumero;
-        private string _nombre;
-        private string _correo;
-        private DateTime _cumpleaños;
-        private int _edad;
+        private string _nombreApp;
+        private string _descripcionApp;
+        private string _nombreFormulario;
+        private int _permisoVer;
+        private int _permisoCrear;
+        private int _permisoModificar;
+        private int _permisoEliminar;
+        private int _idRol;
         private IRepositorioEmpleados RepositorioEmpleados;
 
         public EstadoEntidad Estado {private get; set;}
@@ -26,23 +29,32 @@ namespace CapaControlador_prototipoumg2k26
 
         public int IdPK { get => _idPK; set => _idPK = value; }
 
-        [Required(ErrorMessage = "El campo numero de identificacion es requerido")]
-        [RegularExpression("([0-9]+)", ErrorMessage ="Numero de identificacion debe ser numerico")]
-        [StringLength(maximumLength:10, MinimumLength =10, ErrorMessage ="Numero de identificacion debe tener 10 digitos")]
-        public string IdNumero { get => _idNumero; set => _idNumero = value; }
+        [Required(ErrorMessage = "El campo nombre de aplicacion es requerido")]
+        [StringLength(maximumLength: 100, MinimumLength = 1, ErrorMessage = "El nombre de aplicacion debe tener entre 1 y 100 caracteres")]
+        public string NombreApp { get => _nombreApp; set => _nombreApp = value; }
 
-        [Required]
-        [RegularExpression("^[a-zA-Zá-ú ]+$", ErrorMessage = "El campo Nombre debe ser solo letras")]
-        [StringLength(maximumLength: 100, MinimumLength = 3)]
-        public string Nombre { get => _nombre; set => _nombre = value; }
+        [Required(ErrorMessage = "El campo descripcion de aplicacion es requerido")]
+        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessage = "La descripcion debe tener entre 1 y 255 caracteres")]
+        public string DescripcionApp { get => _descripcionApp; set => _descripcionApp = value; }
 
-        [Required]
-        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", ErrorMessage = "Debe ingresar una direccion de correo valida")]
-        public string Correo { get => _correo; set => _correo = value; }
+        [Required(ErrorMessage = "El campo nombre de formulario es requerido")]
+        [StringLength(maximumLength: 150, MinimumLength = 1, ErrorMessage = "El nombre del formulario debe tener entre 1 y 150 caracteres")]
+        public string NombreFormulario { get => _nombreFormulario; set => _nombreFormulario = value; }
 
-        public DateTime Cumpleaños { get => _cumpleaños; set => _cumpleaños = value; }
+        [Range(0, 1, ErrorMessage = "El permiso ver debe ser 0 o 1")]
+        public int PermisoVer { get => _permisoVer; set => _permisoVer = value; }
 
-        public int Edad { get => _edad; private set => _edad = value; }
+        [Range(0, 1, ErrorMessage = "El permiso crear debe ser 0 o 1")]
+        public int PermisoCrear { get => _permisoCrear; set => _permisoCrear = value; }
+
+        [Range(0, 1, ErrorMessage = "El permiso modificar debe ser 0 o 1")]
+        public int PermisoModificar { get => _permisoModificar; set => _permisoModificar = value; }
+
+        [Range(0, 1, ErrorMessage = "El permiso eliminar debe ser 0 o 1")]
+        public int PermisoEliminar { get => _permisoEliminar; set => _permisoEliminar = value; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "El id del rol debe ser mayor que 0")]
+        public int IdRol { get => _idRol; set => _idRol = value; }
 
         public ModeloEmpleado()
         {
@@ -56,10 +68,14 @@ namespace CapaControlador_prototipoumg2k26
             {
                 var modeloDatosEmpleados = new Empleados();
                 modeloDatosEmpleados.IdPK = _idPK;
-                modeloDatosEmpleados.IdNumero = _idNumero;
-                modeloDatosEmpleados.Nombre = _nombre;   
-                modeloDatosEmpleados.Correo = _correo;
-                modeloDatosEmpleados.Cumpleaños = _cumpleaños;
+                modeloDatosEmpleados.NombreApp = _nombreApp;
+                modeloDatosEmpleados.DescripcionApp = _descripcionApp;
+                modeloDatosEmpleados.NombreFormulario = _nombreFormulario;
+                modeloDatosEmpleados.PermisoVer = _permisoVer;
+                modeloDatosEmpleados.PermisoCrear = _permisoCrear;
+                modeloDatosEmpleados.PermisoModificar = _permisoModificar;
+                modeloDatosEmpleados.PermisoEliminar = _permisoEliminar;
+                modeloDatosEmpleados.IdRol = _idRol;
                 switch (Estado)
                 {
                     case EstadoEntidad.Added:
@@ -88,27 +104,33 @@ namespace CapaControlador_prototipoumg2k26
             ListaEmpleados = new List<ModeloEmpleado>();
             foreach (Empleados item in modeloDatosEmpleados)
             {
-                var fechaCumpleaños = item.Cumpleaños;
                 ListaEmpleados.Add(new ModeloEmpleado
                 {
                     _idPK = item.IdPK,
-                    _idNumero = item.IdNumero,
-                    _nombre = item.Nombre,
-                    _correo = item.Correo,
-                    _cumpleaños = item.Cumpleaños,
-                    _edad=CalcularEdad(fechaCumpleaños)
+                    _nombreApp = item.NombreApp,
+                    _descripcionApp = item.DescripcionApp,
+                    _nombreFormulario = item.NombreFormulario,
+                    _permisoVer = item.PermisoVer,
+                    _permisoCrear = item.PermisoCrear,
+                    _permisoModificar = item.PermisoModificar,
+                    _permisoEliminar = item.PermisoEliminar,
+                    _idRol = item.IdRol
                 });
             }
             return ListaEmpleados;
         }
         public IEnumerable<ModeloEmpleado> FindbyId (string filter)
         {
-            return ListaEmpleados.FindAll(e=> e.IdNumero.Contains(filter) || e._nombre.Contains(filter));
-        }
-        private int CalcularEdad(DateTime date)
-        {
-            DateTime fechaActual = DateTime.Now;
-            return fechaActual.Year-date.Year;
+            if (ListaEmpleados == null)
+                ListaEmpleados = GetAll();
+
+            filter = filter ?? string.Empty;
+            return ListaEmpleados.FindAll(e =>
+                (e.NombreApp ?? string.Empty).IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                (e.DescripcionApp ?? string.Empty).IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                (e.NombreFormulario ?? string.Empty).IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                e.IdPK.ToString().Contains(filter) ||
+                e.IdRol.ToString().Contains(filter));
         }
 
     }

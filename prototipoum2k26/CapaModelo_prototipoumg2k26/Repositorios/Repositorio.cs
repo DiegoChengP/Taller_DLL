@@ -12,7 +12,7 @@ namespace CapaModelo_prototipoumg2k26.Repositorios
         public readonly string connectionString;
         public Repositorio()
         {
-            connectionString = "Dsn=umg_didactica";
+            connectionString = "Dsn=Umg_taller;Database=bd_proyecto_nominas_fin;";
         }
         protected OdbcConnection ObtenerConexion()
         {
